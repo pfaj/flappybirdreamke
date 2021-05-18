@@ -51,7 +51,9 @@ tracks/1/keys = {
 "values": [ 2, 1, 0, 1, 2, 1 ]
 }
 
-[node name="player" type="RigidBody2D"]
+[node name="player" type="RigidBody2D" groups=[
+"player",
+]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

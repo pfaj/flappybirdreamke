@@ -7,11 +7,14 @@ var rand = RandomNumberGenerator.new()
 
 
 func _on_Timer_timeout():
-	print("SPAWN")
-	var pipes = pipe_scene.instance()
-	add_child(pipes)
-	pipes.global_transform.origin = start_pos
-	pipes.position.y = rand.randi_range(-100,100)
+	if Global.started:
+		print("SPAWN")
+		var pipes = pipe_scene.instance()
+		add_child(pipes)
+		pipes.global_transform.origin = start_pos
+		pipes.position.y = rand.randi_range(-100,100)
 
 func _physics_process(delta):
-	position.x -= speed * delta
+	if Global.started:
+		position.x -= speed * delta
+		
