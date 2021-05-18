@@ -8,13 +8,13 @@ var rand = RandomNumberGenerator.new()
 
 func _on_Timer_timeout():
 	if Global.started:
-		print("SPAWN")
 		var pipes = pipe_scene.instance()
 		add_child(pipes)
 		pipes.global_transform.origin = start_pos
-		pipes.position.y = rand.randi_range(-100,100)
+		rand.randomize()
+		pipes.position.y = rand.randi_range(-110,110)
 
 func _physics_process(delta):
-	if Global.started:
+	if Global.started and not Global.lost:
 		position.x -= speed * delta
 		

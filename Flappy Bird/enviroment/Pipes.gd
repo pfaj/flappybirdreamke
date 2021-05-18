@@ -3,7 +3,6 @@ extends Node2D
 func _process(delta):
 	if global_position.x < -250:
 		queue_free()
-		print("penis")
 
 func _on_TopPipe_body_entered(body):
 	if body.is_in_group("player"):
