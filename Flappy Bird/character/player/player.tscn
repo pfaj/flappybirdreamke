@@ -1,11 +1,150 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/textures/bird.png" type="Texture" id=1]
 [ext_resource path="res://character/player/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/wing.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/swoosh.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/textures/red_bird.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/blue_bird.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/black_bird.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "flap"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("black_bird:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("black_bird:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ), Vector2( 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("black_bird:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flap"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_bird:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_bird:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ), Vector2( 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("blue_bird:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "flap"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("red_bird:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("red_bird:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ), Vector2( 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("red_bird:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0, 1, 2, 1 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "flap"
@@ -56,18 +195,59 @@ tracks/1/keys = {
 ]]
 script = ExtResource( 2 )
 
+[node name="black_bird" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -3 )
+texture = ExtResource( 7 )
+hframes = 3
+
+[node name="blue_bird" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 2.45967 )
+texture = ExtResource( 6 )
+hframes = 3
+frame = 1
+
+[node name="red_bird" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -2.63864 )
+texture = ExtResource( 5 )
+hframes = 3
+frame = 1
+region_rect = Rect2( 0, 0, 153, 36 )
+
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
+offset = Vector2( 0, 5 )
 hframes = 3
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="black_bird_ani" type="AnimationPlayer" parent="."]
+autoplay = "flap"
+anims/flap = SubResource( 8 )
+anims/idle = SubResource( 9 )
+
+[node name="blue_bird_ani" type="AnimationPlayer" parent="."]
+autoplay = "flap"
+anims/flap = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="red_bird_ani" type="AnimationPlayer" parent="."]
+autoplay = "flap"
+anims/flap = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flap"
 anims/flap = SubResource( 2 )
 anims/idle = SubResource( 3 )
+
+[node name="button_press" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

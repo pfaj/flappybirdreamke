@@ -7,7 +7,7 @@ var started = false
 var lost = false 
 var score = 0
 var high_score = 0
-var new_score = true
+var new_score = false
 
 func lose():
 	started = false
@@ -20,6 +20,7 @@ func lose():
 		
 		
 func reset():
+	$button_press.play()
 	Global.new_score = false
 	started = false
 	lost = false
@@ -38,6 +39,7 @@ func calculate_high_score(current_score):
 	var last_high_score = config.get_value("score", "high_score", 0)
 	if  current_score > last_high_score:
 		high_score = current_score
+		print("new")
 		new_score = true
 		config.set_value("score", "high_score", high_score)
 		config.save("user://score.txt")
