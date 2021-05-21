@@ -9,6 +9,9 @@ var score = 0
 var high_score = 0
 var new_score = false
 
+var rand = RandomNumberGenerator.new()
+var randT = RandomNumberGenerator.new()
+
 func lose():
 	started = false
 	if not lost:

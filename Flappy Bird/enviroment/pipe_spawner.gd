@@ -12,9 +12,9 @@ func _on_Timer_timeout():
 		add_child(pipes)
 		pipes.global_transform.origin = start_pos
 		rand.randomize()
-		pipes.position.y = rand.randi_range(-110,110)
+		pipes.position.y = rand.randi_range(-100, 100)
 
 func _physics_process(delta):
 	if Global.started and not Global.lost:
-		position.x -= speed * delta
+		position.x -= speed * delta 
 		
