@@ -1,14 +1,24 @@
 extends RigidBody2D
 
-export var FLAP_FORCE = -300
+
 onready var animator = $AnimationPlayer
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if !Global.started and !Global.lost:
+				start()
+			if !Global.lost:
+				flap()
+	
+	if event is InputEventKey:
+		if event.is_action_pressed("flap"):
+			if !Global.started and !Global.lost:
+				start()
+			if !Global.lost:
+				flap()
+
 func _process(delta):
-	if Input.is_action_just_pressed("flap"):
-		if !Global.started and !Global.lost:
-			start()
-		if !Global.lost:
-			flap()
 			
 	if linear_velocity.y == 0 and Global.started:
 		$Sprite.rotation_degrees = 90
@@ -56,7 +66,7 @@ func _process(delta):
 func start():
 	if Global.started: return
 	Global.started = true
-	gravity_scale = 8.75
+	gravity_scale = Global.gravity
 	animator.play("flap")
 	$red_bird_ani.play("flap")
 	$blue_bird_ani.play("flap")
@@ -67,8 +77,9 @@ func start():
 #	print(GlobalWorld.value)
 	
 func flap():
-	linear_velocity.y = FLAP_FORCE
+	linear_velocity.y = Global.FLAP_FORCE
 	$AudioStreamPlayer2D.play()
 	
 func die():
 	pass
+

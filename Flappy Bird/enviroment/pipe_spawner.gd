@@ -1,7 +1,6 @@
 extends Node2D
 
 export(PackedScene) var pipe_scene
-export var speed = 200
 onready var start_pos := position
 var rand = RandomNumberGenerator.new()
 
@@ -16,5 +15,5 @@ func _on_Timer_timeout():
 
 func _physics_process(delta):
 	if Global.started and not Global.lost:
-		position.x -= speed * delta 
+		position.x -= Global.pipe_speed * delta 
 		

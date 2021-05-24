@@ -26,7 +26,7 @@ window/size/width=480
 window/size/height=854
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [input]
 

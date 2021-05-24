@@ -9,6 +9,11 @@ var score = 0
 var high_score = 0
 var new_score = false
 
+##____GAME___SETTINGS____##
+export var FLAP_FORCE = -300
+export var gravity = 8.75
+export var pipe_speed = 200
+
 var rand = RandomNumberGenerator.new()
 var randT = RandomNumberGenerator.new()
 
@@ -42,7 +47,7 @@ func calculate_high_score(current_score):
 	var last_high_score = config.get_value("score", "high_score", 0)
 	if  current_score > last_high_score:
 		high_score = current_score
-		print("new")
+#		print("new")
 		new_score = true
 		config.set_value("score", "high_score", high_score)
 		config.save("user://score.txt")
