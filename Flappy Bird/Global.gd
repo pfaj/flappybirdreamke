@@ -13,6 +13,8 @@ var new_score = false
 export var FLAP_FORCE = -300
 export var gravity = 8.75
 export var pipe_speed = 200
+var settings_menu = false
+var mute = false
 
 var rand = RandomNumberGenerator.new()
 var randT = RandomNumberGenerator.new()
@@ -32,6 +34,7 @@ func reset():
 	Global.new_score = false
 	started = false
 	lost = false
+	settings_menu = false
 	Global.score = 0
 	get_tree().reload_current_scene()
 

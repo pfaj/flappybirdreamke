@@ -1,15 +1,17 @@
 extends RigidBody2D
 
-
 onready var animator = $AnimationPlayer
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
-			if !Global.started and !Global.lost:
-				start()
-			if !Global.lost:
-				flap()
+			if Global.settings_menu:
+				return
+			else:
+				if !Global.started and !Global.lost:
+					start()
+				if !Global.lost:
+					flap()
 	
 	if event is InputEventKey:
 		if event.is_action_pressed("flap"):
@@ -74,7 +76,6 @@ func start():
 	$gray_bird_ani.play("flap")
 	$white_bird_ani.play("flap")
 	$button_press.play()
-#	print(GlobalWorld.value)
 	
 func flap():
 	linear_velocity.y = Global.FLAP_FORCE

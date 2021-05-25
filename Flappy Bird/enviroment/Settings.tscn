@@ -13,39 +13,45 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 6 )
-region_rect = Rect2( 312, 524, 53, 32 )
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 312, 524, 53, 32 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 390, 524, 53, 32 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 6 )
-normal_map = SubResource( 7 )
-region_rect = Rect2( 390, 524, 53, 32 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 6 )
-region_rect = Rect2( 312, 524, 53, 32 )
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
+size = 40
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=9]
 size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=10]
 size = 18
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="DynamicFont" id=14]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("settings_panel:position")
@@ -60,7 +66,7 @@ tracks/0/keys = {
 "values": [ Vector2( -477, 104 ), Vector2( 13, 104 ), Vector2( 0, 104 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("settings_panel:position")
@@ -79,7 +85,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="settings_panel" type="Sprite" parent="."]
-position = Vector2( -480, 104 )
+position = Vector2( 0, 104 )
 texture = ExtResource( 1 )
 offset = Vector2( 240, 323 )
 
@@ -94,18 +100,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameModeToggle" type="CheckButton" parent="settings_panel/Label"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -34.0
-margin_top = 43.5
-margin_right = 30.0
-margin_bottom = 75.5
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
+[node name="GameModeToggle" type="TextureButton" parent="settings_panel/Label"]
+margin_left = 77.0
+margin_top = 100.0
+margin_right = 130.0
+margin_bottom = 138.0
+rect_scale = Vector2( 0.5, 0.5 )
+toggle_mode = true
+texture_normal = SubResource( 13 )
+texture_pressed = SubResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,12 +118,12 @@ anchor_left = -1.297
 anchor_top = 0.5
 anchor_right = 2.406
 anchor_bottom = 0.781
-margin_left = 0.00800323
-margin_top = -7.0
-margin_right = 0.0159912
-margin_bottom = 3.008
-custom_fonts/font = SubResource( 2 )
-text = "Classic              Reverse"
+margin_left = -161.259
+margin_top = -29.0
+margin_right = 178.482
+margin_bottom = 13.76
+custom_fonts/font = SubResource( 8 )
+text = "Classic          Reverse"
 align = 1
 valign = 1
 __meta__ = {
@@ -132,10 +135,10 @@ anchor_left = 0.277
 anchor_top = 0.281
 anchor_right = 0.777
 anchor_bottom = 0.347
-margin_left = 0.0399933
-margin_top = -103.974
-margin_right = 0.0400085
-margin_bottom = -104.338
+margin_left = 11.04
+margin_top = -95.974
+margin_right = 11.04
+margin_bottom = -96.338
 custom_icons/grabber_highlight = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 4 )
 min_value = 150.0
@@ -154,9 +157,9 @@ anchor_right = 0.55
 anchor_bottom = 0.964
 margin_left = -27.92
 margin_top = -47.984
-margin_right = 25.0
-margin_bottom = -42.984
-custom_fonts/font = SubResource( 3 )
+margin_right = 35.0
+margin_bottom = -40.984
+custom_fonts/font = SubResource( 9 )
 text = "Pipe Speed"
 align = 1
 valign = 1
@@ -172,7 +175,7 @@ anchor_bottom = 0.964
 margin_left = 0.0799942
 margin_top = 0.0159988
 margin_bottom = 0.0159988
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 10 )
 text = "200"
 align = 1
 valign = 1
@@ -180,9 +183,62 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Mute" type="TextureButton" parent="settings_panel/speed_slider"]
+margin_left = 93.0
+margin_top = 80.0
+margin_right = 146.0
+margin_bottom = 118.0
+rect_scale = Vector2( 0.5, 0.5 )
+toggle_mode = true
+texture_normal = SubResource( 13 )
+texture_pressed = SubResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="settings_panel/speed_slider/Mute"]
+anchor_left = -1.297
+anchor_top = 0.5
+anchor_right = 2.406
+anchor_bottom = 0.781
+margin_left = -183.259
+margin_top = -23.0
+margin_right = 133.482
+margin_bottom = 7.322
+custom_fonts/font = SubResource( 14 )
+text = "Unmuted            Mute"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset_Button" type="TextureButton" parent="settings_panel"]
+margin_left = 183.0
+margin_top = 263.0
+margin_right = 336.0
+margin_bottom = 308.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset" type="Label" parent="settings_panel/Reset_Button"]
+margin_right = 149.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 16 )
+text = "Reset Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/menu_toggle = SubResource( 5 )
-anims/menu_toggle_off = SubResource( 6 )
+autoplay = "menu_toggle"
+anims/menu_toggle = SubResource( 11 )
+anims/menu_toggle_off = SubResource( 12 )
 
 [connection signal="toggled" from="settings_panel/Label/GameModeToggle" to="." method="_on_GameModeToggle_toggled"]
 [connection signal="value_changed" from="settings_panel/speed_slider" to="." method="_on_speed_slider_value_changed"]
+[connection signal="toggled" from="settings_panel/speed_slider/Mute" to="." method="_on_Mute_toggled"]
+[connection signal="pressed" from="settings_panel/Reset_Button" to="." method="_on_Reset_Button_pressed"]
