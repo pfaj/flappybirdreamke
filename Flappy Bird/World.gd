@@ -8,13 +8,12 @@ func _ready():
 	Global.connect("passed", self, "_on_passed")
 	$CanvasLayer/Control/Label.hide()
 	$CanvasLayer/Control/Death.hide()
-	$CanvasLayer/Control/MenuButton.show()
 	Global.rand.randomize()
 	var value = Global.rand.randi_range(0, 1)
 	Global.randT.randomize()
 	var valueT = Global.randT.randi_range(0, 5)
 #	print (value)
-	if value < 1:
+	if value <1:
 		$background.show()
 	else:
 		$background2.show()
@@ -70,24 +69,6 @@ func _process(delta):
 	if Global.started:
 		$message.hide()
 		$CanvasLayer/Control/Label.show()
-		$CanvasLayer/Control/MenuButton.hide()
-
-func _on_MenuButton_pressed():
-	Global.settings_menu = true
-	$CanvasLayer/Control/MenuButton.hide()
-	$CanvasLayer/Control/MenuOk.show()
-	$CanvasLayer/Control/MenuOk/AnimationPlayer.play("show_ok")
-	$CanvasLayer/Control/settings/AnimationPlayer.play("menu_toggle")
-	$CanvasLayer/Control/settings.show()
-	$CanvasLayer/Control/settings.update_settings()
 
 
-func _on_MenuOk_pressed():
-	if Global.settings_menu == false: return
-	
-	else:
-		$CanvasLayer/Control/settings/AnimationPlayer.play("menu_toggle_off") 
-		$CanvasLayer/Control/MenuOk/AnimationPlayer.play("hide_ok")
-		$CanvasLayer/Control/MenuButton.show()	
-	Global.settings_menu = false
-	
+
